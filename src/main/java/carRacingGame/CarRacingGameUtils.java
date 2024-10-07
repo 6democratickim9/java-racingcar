@@ -7,6 +7,10 @@ import static carRacingGame.PrintView.printWinners;
 public class CarRacingGameUtils {
     public Map<String, String> cars = new HashMap<>();
     public List<String> finalWinners = new ArrayList<>();
+    public static Random RANDOM = new Random();
+    private static final int RANDOM_RANGE = 10;
+    private static final int MOVE_CONDITION = 4;
+    public int currentPosition = 0;
 
     public Map<String, String> setupCars(String[] inputNameOfCars) {
         for (String carName : inputNameOfCars) {
@@ -33,9 +37,8 @@ public class CarRacingGameUtils {
 
 
     public String moveForward(String currentPosition) {
-        Random random = new Random();
-        int randomValue = random.nextInt(10);
-        if (randomValue >= 4) {
+        int randomValue = RANDOM.nextInt(RANDOM_RANGE);
+        if (randomValue >= MOVE_CONDITION) {
             currentPosition += "-";
         }
         return currentPosition;
